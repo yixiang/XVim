@@ -12,7 +12,7 @@
 		A204814F19702F3E0064BE66 /* NSObject+XVimAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A204814E19702F3E0064BE66 /* NSObject+XVimAdditions.m */; };
 		A212A53D1940A330002FB2CF /* XVim.xcplugin in Copy Files */ = {isa = PBXBuildFile; fileRef = A2E7E45217EF0219008F045A /* XVim.xcplugin */; };
 		A2243B7017F03BFC00DD92A1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2E7E45517EFF677008F045A /* Info.plist */; };
-		A251E00619ACCD8200CE9069 /* IDESourceEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A251E00519ACCD8200CE9069 /* IDESourceEditor.framework */; };
+		A251E00819ACD40F00CE9069 /* IDESourceEditor.ideplugin in Frameworks */ = {isa = PBXBuildFile; fileRef = A251E00719ACD40F00CE9069 /* IDESourceEditor.ideplugin */; };
 		A28F422817EEDBC200A3F7AE /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = A24782B314D6F56E003B6433 /* Logger.m */; };
 		A28F422917EEDBC200A3F7AE /* XVim.m in Sources */ = {isa = PBXBuildFile; fileRef = A24782B814D6F56E003B6433 /* XVim.m */; };
 		A28F422A17EEDBC200A3F7AE /* XVimCommandField.m in Sources */ = {isa = PBXBuildFile; fileRef = A24782BA14D6F56E003B6433 /* XVimCommandField.m */; };
@@ -160,7 +160,7 @@
 		A24782C514D6F6DC003B6433 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = XVim/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		A24BE47417AD0D30001F797B /* XVimTester+ExCmd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XVimTester+ExCmd.m"; path = "XVim/Test/XVimTester+ExCmd.m"; sourceTree = SOURCE_ROOT; };
 		A250950C1787B3340090F857 /* XVimTester+Register.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XVimTester+Register.m"; path = "XVim/Test/XVimTester+Register.m"; sourceTree = SOURCE_ROOT; };
-		A251E00519ACCD8200CE9069 /* IDESourceEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDESourceEditor.framework; path = ../../../../Applications/Xcode.app/Contents/PlugIns/IDESourceEditor.framework; sourceTree = "<group>"; };
+		A251E00719ACD40F00CE9069 /* IDESourceEditor.ideplugin */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = IDESourceEditor.ideplugin; path = ../../../../Applications/Xcode.app/Contents/PlugIns/IDESourceEditor.ideplugin; sourceTree = "<group>"; };
 		A25753FF172F5F0E003D8A97 /* XVimTester+TextObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XVimTester+TextObject.m"; path = "XVim/Test/XVimTester+TextObject.m"; sourceTree = SOURCE_ROOT; };
 		A2575402172F652B003D8A97 /* XVimTester+Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XVimTester+Motion.m"; path = "XVim/Test/XVimTester+Motion.m"; sourceTree = SOURCE_ROOT; };
 		A2575405172F65E6003D8A97 /* XVimTester+Operator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "XVimTester+Operator.m"; path = "XVim/Test/XVimTester+Operator.m"; sourceTree = SOURCE_ROOT; };
@@ -293,12 +293,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A28F427217EEDBC200A3F7AE /* AppKit.framework in Frameworks */,
+				A251E00819ACD40F00CE9069 /* IDESourceEditor.ideplugin in Frameworks */,
 				A28F427317EEDBC200A3F7AE /* Cocoa.framework in Frameworks */,
 				A2E7E45D17F037FF008F045A /* DVTKit.framework in Frameworks */,
 				A2E7E45F17F03802008F045A /* DVTFoundation.framework in Frameworks */,
 				A2E7E45917F037EF008F045A /* IDEKit.framework in Frameworks */,
 				A2E7E45B17F037F4008F045A /* IDEFoundation.framework in Frameworks */,
-				A251E00619ACCD8200CE9069 /* IDESourceEditor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +413,7 @@
 		A2B4BABA14D59F6600D817B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A251E00519ACCD8200CE9069 /* IDESourceEditor.framework */,
+				A251E00719ACD40F00CE9069 /* IDESourceEditor.ideplugin */,
 				A2E7E45E17F03802008F045A /* DVTFoundation.framework */,
 				A2E7E45C17F037FF008F045A /* DVTKit.framework */,
 				A2E7E45A17F037F4008F045A /* IDEFoundation.framework */,
