@@ -48,7 +48,6 @@ extern NSString * const XVimDocumentPathKey;
 @property  XVimPosition lastVisualSelectionBegin;
 @property  BOOL lastVisualSelectionToEOL;
 @property (nonatomic) BOOL isRepeating; // For dot(.) command repeat
-
 @property (copy) NSString* lastPlaybackRegister;
 @property (copy) NSString* document;
 @property (nonatomic) BOOL isExecuting; // For @x command executing

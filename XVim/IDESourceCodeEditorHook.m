@@ -13,6 +13,21 @@
 #import "Logger.h"
 #import "XVimStatusLine.h"
 #import "XVim.h"
+#import "NSObject+XVimAdditions.h"
+
+@implementation IDESourceCodeEditor(XVim)
++ (void)load{
+    if (self == [IDESourceCodeEditor class]) {
+        [self xvim_swizzleInstanceMethod:@selector(keyDown:) with:@selector(xvim_keyDown:)];
+    }
+}
+
+- (void)xvim_keyDown:(NSEvent*)event{
+    TRACE_LOG("keyDown:!!!!");
+    [self xvim_keyDown:event];
+}
+
+@end
 
 @implementation IDESourceCodeEditorHook
 

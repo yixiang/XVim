@@ -178,9 +178,12 @@
 }
 
 -  (void)keyDown:(NSEvent *)theEvent{
+    
     @try{
         TRACE_LOG(@"[%p]Event:%@, XVimNotation:%@", self, theEvent.description, XVimKeyNotationFromXVimString([theEvent toXVimString]));
         DVTSourceTextView *base = (DVTSourceTextView*)self;
+        [[base nextResponder] keyDown:theEvent];
+        return;
         XVimWindow* window = [base xvimWindow];
         if( nil == window ){
             [base keyDown_:theEvent];
