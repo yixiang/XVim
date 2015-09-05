@@ -631,8 +631,12 @@
             [self xvim_moveCursor:r.begin preserveColumn:NO];
         }else{
             // Text object expands one text object ( the text object under insertion point + 1 )
-            if( ![self.textStorage isEOF:self.insertionPoint+1]){
-                r = [self xvim_getMotionRange:self.insertionPoint+1 Motion:motion];
+            NSUInteger adjustedPosition = self.insertionPoint + 1;
+            if (motion.motion == TEXTOBJECT_WORD) {
+              adjustedPosition = self.insertionPoint;
+            }
+            if( ![self.textStorage isEOF:adjustedPosition]){
+              r = [self xvim_getMotionRange:adjustedPosition Motion:motion];
             }
             if( self.selectionBegin > r.begin ){
                 self.selectionBegin = r.begin;
