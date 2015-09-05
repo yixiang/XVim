@@ -1326,11 +1326,14 @@ unichar characterAtIndex(NSStringHelper*, NSInteger index);
     NSCharacterSet *wsSet = [NSCharacterSet whitespaceCharacterSet];
     NSCharacterSet *wordSet = [[self class] wordCharSet:(opt & BIGWORD)];
     NSString* string = [self xvim_string];
-    if (index > 0) {
-        if ([wordSet characterIsMember:[string characterAtIndex:index - 1]]) {
-            --index;
-        }
+
+    // We are searching starting from index = insertionPoint + 1. If the character at the insertion
+    // point is a valid character, we need to reset index back by 1. Otherwise we end up with bugs
+    // like this: https://github.com/XVimProject/XVim/issues/554
+    if (index > 0 && [wordSet characterIsMember:[string characterAtIndex:index - 1]]) {
+        --index;
     }
+
     NSUInteger length = self.length;
     if (length == 0 || index > length-1) { return NSMakeRange(NSNotFound, 0); }
     NSUInteger maxIndex = self.length - 1;
@@ -1375,7 +1378,7 @@ unichar characterAtIndex(NSStringHelper*, NSInteger index);
                     newEnd = seek_forwards(string, end, wsSet);
                 }
             }
-            
+
             // If we couldn't eat anything from the end, try to eat start
             NSInteger newBegin = begin;
             if (newEnd == end) {

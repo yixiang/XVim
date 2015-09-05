@@ -632,7 +632,7 @@
         }else{
             // Text object expands one text object ( the text object under insertion point + 1 )
             if( ![self.textStorage isEOF:self.insertionPoint+1]){
-              r = [self xvim_getMotionRange:self.insertionPoint+1 Motion:motion];
+                r = [self xvim_getMotionRange:self.insertionPoint+1 Motion:motion];
             }
             if( self.selectionBegin > r.begin ){
                 self.selectionBegin = r.begin;
