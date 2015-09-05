@@ -632,6 +632,9 @@
         }else{
             // Text object expands one text object ( the text object under insertion point + 1 )
             NSUInteger adjustedPosition = self.insertionPoint + 1;
+            // If we are searching for the word that the insertion point belongs to, we don't want
+            // to start from self.insertionPoint + 1. Otherwise, it would cause bugs like this:
+            // https://github.com/XVimProject/XVim/issues/554
             if (motion.motion == TEXTOBJECT_WORD) {
               adjustedPosition = self.insertionPoint;
             }
