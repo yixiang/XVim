@@ -1308,8 +1308,29 @@ void initNSStringHelper(NSStringHelper*, NSString* string, NSUInteger strLen);
 void initNSStringHelperBackward(NSStringHelper*, NSString* string, NSUInteger strLen);
 unichar characterAtIndex(NSStringHelper*, NSInteger index);
 
++ (NSCharacterSet *) wordCharSet:(BOOL)isBigWord {
+  NSCharacterSet *wordSet = nil;
+  if ( isBigWord ) {
+    NSCharacterSet *charSet = [[NSCharacterSet whitespaceAndNewlineCharacterSet] invertedSet];
+    wordSet = charSet;
+  }
+  else {
+    NSMutableCharacterSet *charSet = [[NSCharacterSet alphanumericCharacterSet] mutableCopy];
+    [charSet addCharactersInString:@"_"];
+    wordSet = charSet;
+  }
+  return wordSet;
+}
+
 - (NSRange) currentWord:(NSUInteger)index count:(NSUInteger)count option:(MOTION_OPTION)opt{
+    NSCharacterSet *wsSet = [NSCharacterSet whitespaceCharacterSet];
+    NSCharacterSet *wordSet = [[self class] wordCharSet:(opt & BIGWORD)];
     NSString* string = [self xvim_string];
+    if (index > 0) {
+        if ([wordSet characterIsMember:[string characterAtIndex:index - 1]]) {
+            --index;
+        }
+    }
     NSUInteger length = self.length;
     if (length == 0 || index > length-1) { return NSMakeRange(NSNotFound, 0); }
     NSUInteger maxIndex = self.length - 1;
@@ -1327,19 +1348,7 @@ unichar characterAtIndex(NSStringHelper*, NSInteger index);
         if (index > maxIndex) {
             break;
         }
-        NSCharacterSet *wsSet = [NSCharacterSet whitespaceCharacterSet];
-        NSCharacterSet *wordSet = nil;
-        
-        if ( opt & BIGWORD) {
-            NSCharacterSet *charSet = [[NSCharacterSet whitespaceAndNewlineCharacterSet] invertedSet];
-            wordSet = charSet;
-        }
-        else {
-            NSMutableCharacterSet *charSet = [[NSCharacterSet alphanumericCharacterSet] mutableCopy];
-            [charSet addCharactersInString:@"_"];
-            wordSet = charSet;
-        }
-        
+      
         unichar initialChar = [string characterAtIndex:index];
         BOOL initialCharIsWs = [wsSet characterIsMember:initialChar];
         NSCharacterSet *searchSet = get_search_set(initialChar, wsSet, wordSet);
